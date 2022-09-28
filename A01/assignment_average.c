@@ -40,7 +40,7 @@ int main(){
         }
         
         if (ta == 0){
-            wait(0);
+            wait(NULL);
             
             for(int col = 0; col < 6; col++){
                 int sum = 0;

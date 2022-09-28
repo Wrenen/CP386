@@ -16,11 +16,17 @@ Version  21-05-2022
 #include <unistd.h>   
 
 int main(){
-    int ppid;
-    printf("The Zombie process ppid is: ");
-    fscanf(stderr,"%d",&ppid);   
+    // run z_creator
+    system("./z_creator &");
+
+    // lists processes
+    system("ps -l");
+
+    printf("\nThe Zombie process ppid is: \n");
     system ("ps -l| grep -w Z| tr -s ' '| cut -d ' ' -f 5");
-    fscanf(buffer,"%d",&ppid);
-    fgets(ppid,50,stderr);
-    printf("PPID: %d\n", ppid);
+
+    system("kill -9 $(ps -l|grep -w Z|tr -s ' '|cut -d ' ' -f 5)");
+
+    printf("\nSucessfully killed zombie process\n\n");
+    system("ps -l");
 }
